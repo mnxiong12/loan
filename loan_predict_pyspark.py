@@ -10,9 +10,6 @@ from pyspark.ml.feature import Imputer
 # Resolve base directory of this script
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
-print(f"Script base directory: {base_dir}")
-print(f"Output file will be: {output_path}")
-
 # Construct full input and output paths
 input_path = f"file://{os.path.join(base_dir, 'loan_data.csv')}"
 output_path = os.path.join(base_dir, "output.txt")
@@ -21,7 +18,8 @@ output_path = os.path.join(base_dir, "output.txt")
 spark = SparkSession.builder.appName('Loan').getOrCreate()
 
 # Load dataset
-df = spark.read.csv('loan_data.csv', header=True, inferSchema=True)
+df = spark.read.csv(input_path, header=True, inferSchema=True)
+#df = spark.read.csv('loan_data.csv', header=True, inferSchema=True)
 
 # *** NULLS ***
 # Review dataset schema to understand columns and their datatype
@@ -238,4 +236,5 @@ print(f"Results written to {output_path}")
 # Stop Spark
 
 spark.stop()
+
 

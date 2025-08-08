@@ -225,9 +225,13 @@ nb_accuracy = nb_evaluator.evaluate(nb_predictions)
 with open(output_path, "w") as f:
     f.write(
         f"Decision Tree Classification Accuracy: {dt_accuracy:.4f}\n"
-        #f"Random Forest Classification Accuracy: {rf_accuracy:.4f}\n"
-        #f"Naive Bayes Classification Accuracy: {nb_accuracy:.4f}\n"
+        f"Random Forest Classification Accuracy: {rf_accuracy:.4f}\n"
+        f"Naive Bayes Classification Accuracy: {nb_accuracy:.4f}\n"
     )
 
+print(f"Results written to {output_path}")
+
+
 # Stop Spark
+
 spark.stop()
